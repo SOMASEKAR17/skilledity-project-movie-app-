@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.overflow-x-auto::-webkit-scrollbar{
+  height: 5px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track{
+  background: #2b2b2b; /* Dark gray track */
+  border-radius: 10px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb{
+   background-color: #ff0000;
+  border-radius: 10px;
+  width: 70px;
+  background: linear-gradient(to right, #ff0000 0px, #ff0000 79px, transparent 79px);
+}
