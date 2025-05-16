@@ -1,10 +1,22 @@
 import { useEffect, useState } from 'react';
 import { fetchMovies } from '../utils/tmdbData';
 import { Link } from "react-router-dom";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 
 export default function Latest() {
   const [latest, setLatest] = useState([]);
+  const [move,setMove] = useState(0);
+
+  useGSAP(()=>{
+    gsap.to("#moving-latest", {
+    x: -move * 500,
+    delay: 0.2,
+    duration: 0.5,
+    ease: "power2.out",
+  });
+  },[move])
 
   useEffect(() => {
     async function getData() {
@@ -16,10 +28,22 @@ export default function Latest() {
     getData();
   }, []);
   return (
-    <><h1 className="text-white bg-black pl-5 pt-5 font-[700] text-[24px]">Latest on Skilledity</h1>
-    <div id='latest' className="overflow-x-auto px-4 py-10 flex flex-col gap-[20px] bg-black">
+    <><div className="flex items-center w-full pt-10 justify-between">
+        <h1 className="text-white pl-5 bg-black  font-bold text-[24px]">Latest on Skilledity</h1>
+        <div className="hidden lg:flex gap-2">
+                    <button onClick={()=>{
+                      if(move>0 && move<=5) setMove(move-1)}} className="w-8 cursor-pointer h-8 flex pt-[2px] justify-center rounded-[9px] bg-[#262626] text-white">
+                      ←
+                    </button>
+                    <button onClick={()=>{
+                      if(move>=0 && move<5) setMove(move+1)}} className="w-8 cursor-pointer h-8 flex pt-[2px] justify-center rounded-[9px] bg-[#262626] text-white">
+                      →
+                    </button>
+                  </div>
+      </div>
+    <div id='latest' className="overflow-x-auto lg:overflow-hidden px-4 py-10 flex flex-col gap-[20px] bg-black">
         
-      <div className="flex gap-4 w-max">
+      <div id='moving-latest' className="flex gap-4 w-max">
         {latest.slice().reverse().map((item,id) => (
           <Link key={id} to="/movie#start" state={{ movie:item }}><div
             key={id}

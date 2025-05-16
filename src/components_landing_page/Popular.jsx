@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
 import { fetchMovies } from '../utils/tmdbData';
 import { Link } from "react-router-dom";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 export default function Popular() {
   const [popular, setPopular] = useState([]);
+   const [move,setMove] = useState(0);
+
+  useGSAP(()=>{
+    gsap.to("#moving-popular", {
+    x: -move * 500,
+    delay: 0.2,
+    duration: 0.5,
+    ease: "power2.out",
+  });
+  },[move])
 
   useEffect(() => {
     async function getData() {
@@ -15,10 +27,22 @@ export default function Popular() {
     getData();
   }, []);
   return (
-    <><h1 className="text-white font-[700] pl-5 pt-5 bg-black text-[24px]">Popular</h1>
-    <div id='popular' className="overflow-x-auto scroll-mt-32 px-4 py-10 flex flex-col gap-[20px] bg-black">
+    <><div className="flex items-center w-full pt-10 justify-between">
+        <h1 className="text-white pl-5 bg-black  font-bold text-[24px]">Popular</h1>
+        <div className="hidden lg:flex gap-2">
+                    <button onClick={()=>{
+                      if(move>0 && move<=5) setMove(move-1)}} className="w-8 cursor-pointer h-8 flex pt-[2px] justify-center rounded-[9px] bg-[#262626] text-white">
+                      ←
+                    </button>
+                    <button onClick={()=>{
+                      if(move>=0 && move<5) setMove(move+1)}} className="w-8 cursor-pointer h-8 flex pt-[2px] justify-center rounded-[9px] bg-[#262626] text-white">
+                      →
+                    </button>
+                  </div>
+      </div>
+    <div id='popular' className="overflow-x-auto lg:overflow-hidden scroll-mt-32 px-4 py-10 flex flex-col gap-[20px] bg-black">
         
-      <div className="flex gap-4 w-max">
+      <div id='moving-popular' className="flex gap-4 w-max">
         {popular.map((item, idx) => (
           <Link key={idx} to="/movie" state={{ movie:item }}><div
             key={idx}

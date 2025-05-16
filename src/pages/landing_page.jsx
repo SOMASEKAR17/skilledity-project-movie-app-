@@ -35,7 +35,7 @@ const landing_page = () => {
         <Navbar />
         <Hero />
         <div className='w-full bg-black'>
-          <div className='w-[1598px] flex flex-col mx-auto'>
+          <div className='lg:w-[1598px] lg:flex lg:flex-col mx-auto'>
             <Genres />
             <UpcomingBangers />
             <Latest />

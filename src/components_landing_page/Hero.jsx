@@ -42,7 +42,7 @@ const Hero = () => {
     }, []);
   return (
     <div id='home' className='h-[650px] bg-gradient-to-b from-black via-transparent to-black relative w-full'>
-      <div className='w-full h-full overflow-hidden bg-black fixed -z-10 grid grid-cols-3 lg:grid-cols-8 lg:gap-[20px] lg:grid-rows-6 grid-rows-3 gap-[10px]'>
+      <div className='w-full h-full overflow-hidden bg-black fixed -z-10 grid grid-cols-4 lg:grid-cols-8 lg:gap-[20px] lg:grid-rows-6  gap-[10px]'>
         {categories.slice(0,4).map((category) => (
           category.images.map((img, i) => (
             <div className=" gap-2 lg:row-span-2 lg:col-span-1 flex rounded-[10px]  overflow-hidden">

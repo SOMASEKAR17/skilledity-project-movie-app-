@@ -43,9 +43,9 @@ const Navbar = () => {
       <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
 
       {/* Desktop Nav */}
-      <ul className="hidden md:flex  space-x-6 lg:w-[585px] lg:h-[75px] lg:flex justify-between py-[10px] px-[40px] rounded-[12px] bg-[#0F0F0F]  text-white border-[4px] border-[#1F1F1F]">
+      <ul className="hidden md:flex -translate-x-[20vw]  space-x-6 lg:min-w-[585px] lg:min-h-[75px] lg:flex justify-between py-[10px] px-[40px] rounded-[12px] bg-[#0F0F0F]  text-white border-[4px] border-[#1F1F1F]">
         {sections.map((item) => (
-          <li key={item} onClick={() => handleClick(item)} className="cursor-pointer text-[18px] font-[500] lg:w-[134px] lg:h-[55px] rounded-[8px] py-[14px] px-[24px] hover:bg-[#1A1A1A] ">
+          <li key={item} onClick={() => handleClick(item)} className="cursor-pointer text-[18px] text-center font-[500] lg:w-[134px] lg:h-[55px] rounded-[8px] py-[14px] px-[24px] hover:bg-[#1A1A1A] ">
             {item}
           </li>
         ))}

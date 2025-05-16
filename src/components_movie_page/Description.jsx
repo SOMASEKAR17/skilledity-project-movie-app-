@@ -162,7 +162,7 @@ const Description = ({ movie }) => {
                         I went to the cinemas to watch but had a houseful board so couldn't watch it.
                       </p>
                     </div>
-                    <div className="bg-[#0F0F0F] border-[1px] border-[#262626] rounded-lg p-4 text-white">
+                    <div className="bg-[#0F0F0F] hidden lg:block border-[1px] border-[#262626] rounded-lg p-4 text-white">
                       <div className="flex justify-between items-center mb-2">
                         <div>
                           <h3 className="font-semibold text-[16px]">Aniket Roy</h3>
