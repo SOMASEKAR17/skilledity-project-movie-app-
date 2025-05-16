@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
   font-family: 'Manrope', sans-serif;
 }
@@ -17,5 +22,4 @@ body {
    background-color: #ff0000;
   border-radius: 10px;
   width: 70px;
-  background: linear-gradient(to right, #ff0000 0px, #ff0000 79px, transparent 79px);
 }
